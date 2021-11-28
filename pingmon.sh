@@ -12,7 +12,7 @@ timestamp() {
 HOST="${HOST:-heise.de}"
 
 # Create the logfile
-LOGFILE="/var/pingmon/`timestamp`.log"
+LOGFILE="/var/pingmon/pingmon-`timestamp`.log"
 :> "$LOGFILE"
 
 # Main-loop
