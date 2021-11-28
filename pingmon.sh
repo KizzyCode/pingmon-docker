@@ -17,7 +17,7 @@ LOGFILE="/var/pingmon/pingmon-`timestamp`.log"
 
 # Main-loop
 while true; do
-    # Perform exactly one ping and wait for exactly up to one second for a reply
+    # Perform one ping and wait for up to one second for a reply
     if ping -c 1 -w 1 "$HOST" 2>/dev/null >/dev/null; then
         # Ping completed
         TIMESTAMP=`timestamp`
