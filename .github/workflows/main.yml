@@ -9,6 +9,7 @@ env:
   REGISTRY: ghcr.io
   DOCKERFILE: Dockerfile
   IMAGE_TAG: kizzycode/pingmon:latest
+  DOCKER_HUB_USER: kizzycode
 
 jobs:
   build-and-push-image:
