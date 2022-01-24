@@ -23,15 +23,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
+      # Publish to ghcr.io
       - name: Login to Docker registry
         run: |
-          docker login -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}" "${{ env.REGISTRY }}"
-      
+          docker login --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" "${{ env.REGISTRY }}"
       - name: Build the Docker image
         run: |
           docker build . --file "${{ env.DOCKERFILE }}" --tag "${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}"
-
       - name: Push the Docker image
         run: |
           docker push "${{ env.REGISTRY }}/${{ env.IMAGE_TAG }}"
       
+      # Publish to dockerhub
+      - name: Login to Docker registry
+        run: |
+          docker login --username "${{ env.DOCKER_HUB_USER }}" --password "${{ secrets.DOCKER_HUB_TOKEN }}"
+      - name: Build the Docker image
+        run: |
+          docker build . --file "${{ env.DOCKERFILE }}" --tag "${{ env.IMAGE_TAG }}"
+      - name: Push the Docker image
+        run: |
+          docker push "${{ env.IMAGE_TAG }}"
