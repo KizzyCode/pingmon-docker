@@ -7,5 +7,5 @@ Welcome to `pingmon` 🎉
 `pingmon` is a simple container for connectivity monitoring via the `ping` command line utility.
 
 ## Example
-See the [Docker-Compose.yml](Docker-Compose.yml) file as example. Then simply execute `docker-compose up` to start the
+See the [docker-compose.yml](docker-compose.yml) file as example. Then simply execute `docker-compose up` to start the
 container.

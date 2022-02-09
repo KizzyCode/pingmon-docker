@@ -3,6 +3,6 @@ services:
   pingmon:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     volumes:
       - ./log:/var/pingmon:rw
