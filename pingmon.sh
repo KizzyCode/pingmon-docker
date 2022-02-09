@@ -11,9 +11,11 @@ timestamp() {
 # Get the host or use "heise.de" as fallback
 HOST="${HOST:-heise.de}"
 
-# Create the logfile
+# Create the logfiles
 LOGFILE="/var/pingmon/pingmon-`timestamp`.log"
+ERRFILE="/var/pingmon/pingmon-`timestamp`.err.log"
 :> "$LOGFILE"
+:> "$ERRFILE"
 
 # Main-loop
 while true; do
@@ -26,6 +28,7 @@ while true; do
         # Ping failed
         TIMESTAMP=`timestamp`
         echo "$TIMESTAMP,failure" >> "$LOGFILE"
+        echo "$TIMESTAMP,failure" >> "$ERRFILE"
     fi
 
     # Sleep one second because we don't want to flood THE INTERNET™️ in case of immediate success or failure
